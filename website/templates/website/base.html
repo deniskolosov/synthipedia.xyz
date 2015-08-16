@@ -1,0 +1,29 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+
+
+{% block bootstrap3_content %}
+<nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+              <div class="navbar-header">
+                        <a class="navbar-brand" href="/">Synthipedia.xyz</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="{% if pagetab == 'home' %}active{%endif%}"><a href="/">Home</a></li>
+                        <li class="{% if pagetab == 'synths' %}active{%endif%}"><a href="/synths/synths-list">Synths</a></li>
+                        <li class="{% if pagetab == 'reviews' %}active{%endif%}"><a href="/reviews/review-list">Reviews</a></li> 
+                        <li class="{% if pagetab == 'add_synth' %}active{%endif%}"><a href="/synths/add-synth">Add synth</a></li> 
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    </ul>
+                </div>
+    </div>
+</nav>
+{% block content %}Content here.{% endblock %}
+{% endblock %}

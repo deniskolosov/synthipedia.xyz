@@ -1,0 +1,21 @@
+{% extends 'website/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-1">
+            <div class="page-header">
+                <h2><strong class="text-info">{{synth.name}}</strong></h2><h3>issued by {{synth.maker}}:</h3>
+            </div>
+            
+        </div>
+        <div class="col-md-6 col-md-offset-1"> 
+            <img src="{{synth.pic.url}}" class="img-responsive" alt="{{synth.name}}">
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

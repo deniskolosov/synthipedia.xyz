@@ -1,24 +1,11 @@
-{% extends 'bootstrap3/bootstrap3.html' %}
-{% load bootstrap3 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+{% extends 'website/base.html' %}
+{% load staticfiles %}
 
-{% block bootstrap3_content %}
-    <div class="container">
-
-        {% if latest_review_list %}
-            <ul>
-            {% for review in latest_review_list %}
-            <li> {{review.author}} wrote a review about {{review.synth.name}}:<br>
-                {{review.review_text }}
-            </li>
-            {% endfor %}
-            </ul>
-        {% else %}
-        <p>No reviews are available.</p>
-        {% endif %}
-
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>Welcome to sytnhipedia.xyz!</h1>
     </div>
-
+</div>
 
 {% endblock %}

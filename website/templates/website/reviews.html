@@ -1,0 +1,39 @@
+{% extends 'website/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h2>Latest reviews:</h2>
+        </div>
+
+        <div class="panel-group">
+            {% if latest_review_list %}
+                {% for review in latest_review_list %}
+                <div class="panel panel-primary">
+                    <div class="panel panel-heading">
+                        {{review.author}} wrote a review about {{review.synth.name}}:
+                    </div>
+                    <div class="panel-body">
+                    <div class="col-md-8">
+                            <p>{{review.review_text|truncatewords:8 }}</p>
+                            <a href="{% url 'review' review.slug %}">Read more</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href={{review.synth.pic.url}} class="thumbnail">
+                            <img src={{review.synth.pic.url}} style="width:150px;height:150px">
+                        </a>
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <p>No reviews are available.</p>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

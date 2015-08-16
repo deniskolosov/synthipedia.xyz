@@ -103,3 +103,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_ROOT = '/Users/defult/Documents/py/synthipedia/upload/'
+MEDIA_URL = '/media/'

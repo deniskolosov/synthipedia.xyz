@@ -1,0 +1,51 @@
+{% extends 'website/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container">
+    <div class="col-md-8">
+        <div class="page-header">
+            <h2>Synths in database:</h2>
+        </div>
+
+        <div class="panel-group">
+            {% for synth in synths %}
+            <div class="panel panel-primary">
+                <div class="panel panel-heading">
+                    {{synth.name}} issued by {{synth.maker}} in {{synth.issue_year}}:
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-8">
+                        Reviews of <a href="{% url 'synth' synth.slug %}">{{synth.name}}</a>:
+                        <ul class="list-group">
+                            {% for reviews in synth_reviews %}
+                                {% for r in reviews %}
+                                    {% if r.synth.name == synth.name %}
+                                    <li class="list-group-item"><a href="{% url 'review' r.slug %}">{{r.author}}'s review:</a>
+                                        <p>{{r.review_text|truncatewords:4}}</p>
+                                    </li>
+                                    {% endif %}
+                                {% endfor %}
+                        </ul>
+                            {% empty %}
+                            <p>There are no reviews available. Add your own!</p>
+                            {% endfor %}
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <a href={{synth.pic.url}} class="thumbnail">
+                            <img src={{synth.pic.url}} style="width:150px;height:150px">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p> There are no synths in database! Add yours! </p>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
